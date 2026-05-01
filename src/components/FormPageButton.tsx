@@ -11,7 +11,7 @@ export const FormPageButton = ({ icon, label, isActive, onClick }: FormPageButto
       <button
         type='button'
         onClick={onClick}
-        className={`text-white p-2 hover:bg-blue-600 transition-colors duration-300 rounded-full ${
+        className={`text-white p-2 hover:bg-blue-700 transition-colors duration-300 rounded-full ${
           isActive ? "bg-blue-500" : "bg-blue-200"
         }`}
       >
