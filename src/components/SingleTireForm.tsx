@@ -79,7 +79,7 @@ export const SingleTireForm = ({
           placeholder='Podaj ocenę'
           name='rating'
         />
-        <label className='block mb-2'>Uwagi opcjonalnie:</label>
+        <label className='block mb-2'>Uwagi (opcjonalne):</label>
         <input
           type='text'
           className={inputClass}

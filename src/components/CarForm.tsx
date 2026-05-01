@@ -48,7 +48,7 @@ export const CarForm = ({ onClick, carData, onChange }: CarFormProps) => {
         name='vin'
         placeholder='Podaj VIN'
       />
-      <label className='block mb-2'>Email: (opcjonalnie)</label>
+      <label className='block mb-2'>Email: (opcjonalne)</label>
       <input
         type='email'
         className={inputClass}

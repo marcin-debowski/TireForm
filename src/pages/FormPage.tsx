@@ -141,7 +141,7 @@ export const FormPage = () => {
         {error && <span className='text-red-500'>{error}</span>}
         {successMessage && <span className='text-green-500'> {successMessage}</span>}
       </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} noValidate>
         {selectedForm === "car" && (
           <CarForm
             onClick={() => setSelectedForm("tire")}
