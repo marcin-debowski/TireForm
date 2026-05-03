@@ -112,6 +112,7 @@ export const FormPage = () => {
         rear_right: { ...emptyTire },
         rear_left: { ...emptyTire },
       });
+      setSelectedForm("car");
     } catch (error: any) {
       setIsLoading(false);
       setError(error.message);

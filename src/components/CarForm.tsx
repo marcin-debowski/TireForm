@@ -9,7 +9,7 @@ interface CarFormProps {
 export const CarForm = ({ onClick, carData, onChange }: CarFormProps) => {
   const inputClass =
     "border p-2 w-full mb-4 outline-none transition-colors rounded-xl" +
-    "invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-1 focus:invalid:ring-red-500";
+    "user-invalid:border-red-500 user-invalid:text-red-600 focus:user-invalid:border-red-500 focus:user-invalid:ring-1 focus:user-invalid:ring-red-500";
   return (
     <div className='mx-4'>
       <h2 className='text-xl font-bold mb-4 text-center'>Car Form</h2>

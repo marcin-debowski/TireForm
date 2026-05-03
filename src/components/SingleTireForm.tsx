@@ -14,13 +14,19 @@ export const SingleTireForm = ({
   onTireChange,
 }: SingleTireFormProps) => {
   const [isOpen, setIsOpen] = useState(false);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onTireChange(positionKey, e.target.name, e.target.value);
   };
 
+  const safeNumberString = tireData.tread_depth ? tireData.tread_depth.replace(",", ".") : "";
+  const numericTread = parseFloat(safeNumberString);
+  const isTreadTooLow =
+    !isNaN(numericTread) && numericTread < 1.6 && tireData.tread_depth.trim() !== "";
+
   const inputClass =
     "border p-2 w-full mb-4 outline-none transition-colors " +
-    "invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-1 focus:invalid:ring-red-500";
+    "user-invalid:border-red-500 user-invalid:text-red-600 focus:user-invalid:border-red-500 focus:user-invalid:ring-1 focus:user-invalid:ring-red-500";
   return (
     <div>
       <h3 className='text-lg font-bold mb-2' onClick={() => setIsOpen(!isOpen)}>
@@ -48,7 +54,14 @@ export const SingleTireForm = ({
           placeholder='Podaj rozmiar opony'
           name='size'
         />
-        <label className='block mb-2'>Bieżnik głębokość:</label>
+        <label className='block mb-2'>
+          Bieżnik głębokość (mm):{" "}
+          {isTreadTooLow && (
+            <span className='text-orange-600 text-sm mb-4 font-medium'>
+              ⚠️ Ostrzeżenie: Bieżnik poniżej minimalnej wartości 1.6 mm.
+            </span>
+          )}
+        </label>
         <input
           type='text'
           className={inputClass}
@@ -58,6 +71,7 @@ export const SingleTireForm = ({
           placeholder='Podaj głębokość bieżnika w mm'
           name='tread_depth'
         />
+
         <label className='block mb-2'>DOT:</label>
         <input
           type='text'
