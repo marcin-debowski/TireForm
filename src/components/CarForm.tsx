@@ -1,66 +1,50 @@
-import { MoveButton } from "./MoveButton";
+import type { CarFormProps } from "../types/report-form.types";
+import { FormInput } from "./FormInput.tsx";
 
-interface CarFormProps {
-  onClick: () => void;
-  carData: any;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-export const CarForm = ({ onClick, carData, onChange }: CarFormProps) => {
-  const inputClass =
-    "border p-2 w-full mb-4 outline-none transition-colors rounded-xl" +
-    "user-invalid:border-red-500 user-invalid:text-red-600 focus:user-invalid:border-red-500 focus:user-invalid:ring-1 focus:user-invalid:ring-red-500";
+export const CarForm = ({ carData, onChange, errors }: CarFormProps) => {
   return (
     <div className='mx-4'>
-      <h2 className='text-xl font-bold mb-4 text-center'>Car Form</h2>
-
-      <label className='block mb-2'>Marka:</label>
-      <input
-        type='text'
-        className={inputClass}
+      <FormInput
+        label='Marka:'
+        name='brand'
         value={carData.brand}
         onChange={onChange}
+        error={errors?.brand}
         required
         minLength={2}
         placeholder='Podaj markę samochodu'
-        name='brand'
       />
-      <label className='block mb-2'>Model:</label>
-      <input
-        type='text'
-        className={inputClass}
+      <FormInput
+        label='Model:'
+        name='model'
         value={carData.model}
         onChange={onChange}
+        error={errors?.model}
         required
         minLength={1}
         placeholder='Podaj model samochodu'
-        name='model'
       />
-      <label className='block mb-2'>VIN:</label>
-      <input
-        type='text'
-        className={inputClass}
+      <FormInput
+        label='VIN:'
+        name='vin'
         value={carData.vin}
         onChange={onChange}
+        error={errors?.vin}
         required
         minLength={17}
         maxLength={17}
-        name='vin'
         placeholder='Podaj VIN'
       />
-      <label className='block mb-2'>Email: (opcjonalne)</label>
-      <input
+      <FormInput
+        label='Email: (opcjonalne)'
+        name='email'
         type='email'
-        className={inputClass}
+        autoComplete='email'
         value={carData.email}
         onChange={onChange}
-        name='email'
+        error={errors?.email}
         placeholder='Podaj email'
       />
-
-      <div className='flex justify-center'>
-        <MoveButton text='Dalej' onClick={onClick} />
-      </div>
     </div>
   );
 };
